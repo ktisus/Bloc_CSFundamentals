@@ -1,0 +1,147 @@
+1. In your own words, explain what clean code is and why it is important.
+Clean Code is to write code readability, ease of maintenance, and simplicity. 
+Having clean, high-quality code is especially important when working with others and with large-scale, complex applications in general.
+
+2. If the code was not created to an acceptable standard, I thought it would affect on the system to make it run too slow or too noise, or an app cannot work as requested. In the worst case, it could make the device burn.
+
+3. 
+
+FUNCTION convertToCelsius(temp)
+        SET convertedTemp to (temp-32) * (5/9)
+        PRINT convertedTemp
+    END FUNCTION
+
+FUNCTION convertToFahrenheit(temp)
+        SET convertedTemp to (x * 1.8) + 32
+        PRINT convertedTemp
+    END FUNCTION
+
+4. It is a clean code.
+
+5.
+
+a.
+
+FUNCTION checkOutCustomer(subTotal, discountRate, paymentType)
+
+a = subTotal * discountRate; 
+b = subTotal * tax;
+
+   PRINT "Your total due is: " + a + b
+
+   IF paymentType = 'CASH' THEN
+       CALL getPayment RETURNING amount
+       PRINT "Change due: " + amount - a + b
+   ELSE IF paymentType = 'CREDIT CARD' THEN
+       CALL getPayment RETURNING amount
+       PRINT "Your credit card has been charged: " + a + b
+   END IF
+END FUNCTION
+
+b.
+
+FUNCTION checkoutBook(book, guest)
+ IF guest.accountActive AND NOT(guest.hasOverdueBooks) AND guest.outstandingFees = 0 THEN
+     APPEND book to guest.books
+     SET book.status to "Checked Out"
+     PRINT "Your books have been issued."
+ ELSE
+     PRINT "Unable to check out book."
+ END IF
+END FUNCTION
+
+c.
+
+CLASS BankAccount
+
+ FUNCTION displayBalance
+    PRINT balance
+ END FUNCTION
+
+CLASS Balance
+
+ FUNCTION deposit(amount)
+    SET balance to balance + amount
+ END FUNCTION
+
+CLASS RemainBalance 
+ 
+ FUNCTION withdraw(amount)
+     IF balance > amount THEN
+       SET balance to balance - amount
+     END
+ END FUNCTION
+
+CLASS Offer
+ 
+ FUNCTION creditCardOffer
+     IF NOT(customer.hasCreditCard) THEN
+         CALL offerCreditCard
+     END
+ END FUNCTION
+
+CLASS Status
+
+ FUNCTION checkStatus
+     IF NOT(customer.hasCheckingAccount) THEN
+         CALL offerCheckingAccount
+     END
+ END FUNCTION
+
+ ....
+ ....
+ ....
+
+END
+
+6.
+
+function square(arr) {
+  
+ var sum = 0;
+ 
+  
+  for (var i=0; i< arr.length; i++) {
+    
+    sum += arr[i]; 
+  
+  }
+    var n = Math.sqrt(sum);
+  
+   if (n % 1 ===0) {
+    return n;
+   }
+   else {
+     return sum;
+   }
+ }
+
+7.
+
+function duplicate(arr) {
+  
+ for (var i=0; i< arr.length; i++) {
+    
+     for (var j=0; j<i; j++){
+        
+       if (arr[j] === arr[i]) {
+          return true;
+        }
+     }
+  
+  }
+   return false; 
+ }
+
+8.
+
+function anagramWord (a, b) {
+  x = a.split('').sort().join('');
+  y = b.split('').sort().join('')
+  
+  if (x === y) {
+    return "An anagram"
+  }
+  else 
+    return "not anagram"
+}
