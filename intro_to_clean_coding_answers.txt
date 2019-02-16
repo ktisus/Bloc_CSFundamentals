@@ -6,15 +6,15 @@ Having clean, high-quality code is especially important when working with others
 
 3. 
 
-FUNCTION convertToCelsius(temp)
-        SET convertedTemp to (temp-32) * (5/9)
-        PRINT convertedTemp
-    END FUNCTION
-
-FUNCTION convertToFahrenheit(temp)
-        SET convertedTemp to (x * 1.8) + 32
-        PRINT convertedTemp
-    END FUNCTION
+FUNCTION do(x, y)               // Creating a new function
+ IF y = "F" THEN               // Check if y is equal "F"
+ SET z to (x−32) * (5/9)       // Formula to convert degrees fahrenheit to celsius
+ PRINT z                       // Print result
+ ELSE IF y = "C" THEN          // If y not equal to "F", check if equal to "C"
+ SET z to x * (9/5) + 32   // Formula to convert degrees celsius to fahrenheit
+ PRINT z                       // Print result
+ END IF
+END FUNCTION
 
 4. It is a clean code.
 
@@ -23,18 +23,15 @@ FUNCTION convertToFahrenheit(temp)
 a.
 
 FUNCTION checkOutCustomer(subTotal, discountRate, paymentType)
-
-a = subTotal * discountRate; 
-b = subTotal * tax;
-
-   PRINT "Your total due is: " + a + b
+ total = subtotal * tax   
+   PRINT "Your total due is: " + subTotal * discountRate + total
 
    IF paymentType = 'CASH' THEN
        CALL getPayment RETURNING amount
-       PRINT "Change due: " + amount - a + b
+       PRINT "Change due: " + amount - subTotal * discountRate + total
    ELSE IF paymentType = 'CREDIT CARD' THEN
        CALL getPayment RETURNING amount
-       PRINT "Your credit card has been charged: " + a + b
+       PRINT "Your credit card has been charged: " + subTotal * discountRate + total
    END IF
 END FUNCTION
 
