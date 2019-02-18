@@ -1,0 +1,87 @@
+1. What is the main difference between a stack and a queue?
+- A stack is to implement a LIFO priority collection.
+- A queue is to implement a FIFO priority collection.
+
+2. What are the similarities between stacks and queues?
+They are both data structures and accessible to one element at a time.
+
+3. Imagine you are an engineer tasked with implementing the UNDO and REDO options in a word processor such as Microsoft Word. Which data structure would you use for each option and why?
+In UNDO option, I use the stack data structure as LIFO element. When we undo something, the latest action will be erased first to go back to the previous.
+In REDO option, I also use the stack data structure as LIFO element. When we redo something, the latest erased data will come back first.
+
+PROGRAMMING QUESTIONS
+
+1. Given a string, reverse it using a stack. For example, the string "Bloc!" should be converted to "!colB".
+Outline:
+
+Function reverse (str)
+	INIT a new stack
+	FOR each character in str
+	       CALL stack.push WITH character
+	END FOR
+	INIT reversed to empty string
+	WHILE stack is not empty
+	        CALL stack.pop RETURNING character
+	        APPEND character to reversed
+	END WHILE
+	RETURN reversed
+END FUNCTION
+
+CODING:
+
+Function reverse (str) {
+	var stack = [];
+
+	for (var i=0; i<str.length; i++) {
+	      stack.push(str[i]);
+       }
+
+	var reversed = ту;
+	while (stack.length > 0) {
+	        reversed += stack.pop();
+   }
+   return reversed;
+}
+
+2. Implement the `pop` method of a stack using one queue. Make a FIFO data structure mirror the functionality of a LIFO data structure. Since the internal list is not the same as defined in the checkpoint, it may help to rewrite the pseudocode first.
+
+const deleteItem = (queue) => {
+	var first, last;
+
+	for (var i=0; i<queue.length; i++) {
+	       if (i !== queue.length -1) {
+	            first = queue.shift();
+	            queue.push(first);
+	            console.log(queue);
+              }
+	       else {
+		last = queue.shift();
+		console.log(queue);
+	       }
+	}
+	return last;
+}
+
+3.  
+class Queue  {
+	constructor (items) {
+	         this.items = items;
+}
+
+enqueue(items) {
+         this.items.push(items)
+         return this.items;
+}
+
+dequeue() {
+         this.items.splice(0,1)
+         return this.items;
+ }
+}
+
+let queue = new Queue(['B', 'C', 'D']);
+queue.enqueue('A');
+queue.dequeue();
+console.log(queue.items)
+
+
