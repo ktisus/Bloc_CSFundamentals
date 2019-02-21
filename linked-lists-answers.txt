@@ -1,0 +1,149 @@
+1. What are some pros and cons of using linked lists instead of arrays?
+Linked list never contains empty placeholders. Each node is independent in memory, so the operation system may use any available memory location to store it. Node memory independence allows linked lists to easily grow to immense sizes.	
+
+However, because each node may exist anywhere in physical memory, it can be inefficient to access an element within the list. Elements must be accessed in order, starting from the first node (the head). Meanwhile, with an array, elements are indexed and can be accessed immediately by stating the index of the element within the array.
+
+2. Come up with a real world example of a linked list.
+Music Player Ð Songs in music player are linked to previous and next song. you can play songs either from starting or ending of the list.
+
+PROGRAMMING QUESTIONS
+
+1. There is no While loop in pseudocode. 
+
+LinkedList.prototype.push = function(element){  
+    var node = {
+       value: element,
+       next: null
+    }
+  
+    if(!this.head){
+      this.head = node;  
+      this.length ++;    
+      return node;
+    }
+    else{
+      current = this.head;
+
+while(current.next){  
+        current = current.next;
+      }
+      
+      current.next = node;
+      this.length ++
+      return node;
+    }
+  }
+
+2. Given an unsorted singly linked list, remove all duplicates from the linked list.
+
+function LinkedList(){
+  this.head= null;
+  this.length=0;
+}
+
+LinkedList.prototype.add = function(val){  
+    var node = {
+       value: val,
+       next: null
+    }
+  
+    if(!this.head){
+      this.head = node;  
+      this.length ++;    
+      return this;
+    }
+    else{
+      current = this.head;
+      while(current.next){
+        current = current.next;
+      }
+      current.next = node;
+      this.length ++;
+      return node;
+    }
+  }
+
+LinkedList.prototype.duplicate = function(){
+ if (!this.head || !this.head.next) {
+      console.log("no duplicates");
+      return;
+  }
+
+    var thisNode = this.head;
+    while (thisNode != null) {
+      var previousNode = thisNode;
+      var nextNode = thisNode.next;
+      while (nextNode != null) {
+        if (thisNode.value == nextNode.value) {
+          previousNode.next = nextNode.next;
+          this.length --;
+        } else {
+          previousNode = nextNode;
+        }
+        nextNode = nextNode.next;
+      }
+      thisNode = thisNode.next;
+    }
+    return this;
+  }
+
+list= new LinkedList()
+list.add('a');
+list.add('c');
+list.add('d');
+list.add('d');
+list.add('a');
+list.duplicate()
+
+console.log(list)
+
+3. Given an unsorted singly linked list, reverse it.
+
+function LinkedList(){
+  this.head= null;
+  this.length=0;
+}
+
+LinkedList.prototype.add = function(val){  
+    var node = {
+       value: val,
+       next: null
+    }
+  
+    if(!this.head){
+      this.head = node;  
+      this.length ++;    
+      return this;
+    }
+    else{
+      current = this.head;
+      while(current.next){
+        current = current.next;
+      }
+      current.next = node;
+      this.length ++;
+      return node;
+    }
+  }
+
+LinkedList.prototype.reverse= function() {
+    var previousNode = null;
+    var thisNode = this.head;
+    var nextNode;
+
+    while (thisNode) {
+      nextNode = thisNode.next;
+      thisNode.next = previousNode;
+      previousNode = thisNode;
+      thisNode = nextNode;
+    }
+
+    this.head = previousNode;
+  }
+
+list= new LinkedList()
+list.add('a');
+list.add('b');
+list.add('c');
+list.add('d');
+list.reverse()
